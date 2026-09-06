@@ -4,7 +4,6 @@ public class ArmyUnit : MonoBehaviour
 {
     [Header("Настройки на движението")]
     public float moveSpeed = 5f;
-    public float rotationSpeed = 10f;
 
     private Vector3 targetPosition;
     private ProvinceTile targetTile;
@@ -21,16 +20,6 @@ public class ArmyUnit : MonoBehaviour
         {
             // Движение към CenterNode
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-
-            // Завъртане по посока на движението
-            Vector3 direction = (targetPosition - transform.position).normalized;
-            direction.y = 0;
-
-            if (direction != Vector3.zero)
-            {
-                Quaternion targetRotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-            }
 
             // Пристигане в CenterNode
             if (Vector3.Distance(transform.position, targetPosition) < 0.01f)

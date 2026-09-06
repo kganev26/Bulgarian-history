@@ -1,84 +1,53 @@
+using System.Collections.Generic;
 using UnityEngine;
-
-public enum TurnState { PlayerTurn, ByzantineTurn }
 
 public class ProvinceManager : MonoBehaviour
 {
-    [Header("Текуща фаза на играта")]
-    public TurnState currentState = TurnState.PlayerTurn;
+    public static ProvinceManager Instance { get; private set; }
 
-    [Header("Армии")]
-    public ArmyUnit selectedArmy;
-    public ByzantineAI byzantineAI;
+    [Header("Faction Units Trace")]
+    public List<Unit> playerUnits = new List<Unit>();
+    public List<Unit> enemyUnits = new List<Unit>();
 
-    [Header("Текуща провинция на играча")]
-    public ProvinceTile currentProvince;
-
-    private Camera mainCamera;
-
-    void Start()
+    private void Awake()
     {
-        mainCamera = Camera.main;
-
-        if (selectedArmy != null && currentProvince != null)
+        // Настройка на Singleton
+        if (Instance == null)
         {
-            selectedArmy.transform.position = currentProvince.GetCenterPosition();
-            currentProvince.SetOwner(ProvinceOwner.Bulgarians);
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        // --- Тук продължава вашият оригинален код в Awake (ако има такъв) ---
+    }
+
+    // Регистрация на единица при появяване
+    public void RegisterUnit(Unit unit)
+    {
+        if (unit.factionId == 1 && !playerUnits.Contains(unit))
+        {
+            playerUnits.Add(unit);
+        }
+        else if (unit.factionId == 2 && !enemyUnits.Contains(unit))
+        {
+            enemyUnits.Add(unit);
         }
     }
 
-    void Update()
+    // Премахване на единица при премахване/смърт
+    public void UnregisterUnit(Unit unit)
     {
-        // Играчът може да клика само когато е негов ред
-        if (currentState == TurnState.PlayerTurn && Input.GetMouseButtonDown(0))
+        if (unit.factionId == 1)
         {
-            HandleTileClick();
+            playerUnits.Remove(unit);
         }
-    }
-
-    void HandleTileClick()
-    {
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
+        else if (unit.factionId == 2)
         {
-            ProvinceTile clickedTile = hit.collider.GetComponent<ProvinceTile>();
-
-            if (clickedTile != null && selectedArmy != null)
-            {
-                if (clickedTile == currentProvince) return;
-
-                if (currentProvince != null && currentProvince.IsAdjacentTo(clickedTile))
-                {
-                    selectedArmy.MoveToProvince(clickedTile);
-                    currentProvince = clickedTile;
-                }
-                else
-                {
-                    Debug.LogWarning($"Ходът до {clickedTile.provinceName} е невалиден!");
-                }
-            }
+            enemyUnits.Remove(unit);
         }
-    }
-
-    // Метод за бутона "Край на хода"
-    public void EndTurn()
-    {
-        if (currentState != TurnState.PlayerTurn) return;
-
-        // Преминаваме към хода на Византийците
-        currentState = TurnState.ByzantineTurn;
-        Debug.Log("Ходът на Българите приключи. Ход на Византийците...");
-
-        // Византийският AI прави своя ход
-        if (byzantineAI != null)
-        {
-            byzantineAI.MakeTurn();
-        }
-
-        // Връщаме реда на играча
-        currentState = TurnState.PlayerTurn;
-        Debug.Log("Ваш ред е!");
     }
 }
