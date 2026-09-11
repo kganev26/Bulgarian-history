@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fd37216602a8a94487d86aa5cbba683, type: 3}
   m_Name: Bulgarian_Cavalry_CampData
   m_EditorClassIdentifier: Assembly-CSharp::CampData
-  campName: Military Camp
+  campName: "\u041E\u043D\u0433\u044A\u043B\u0430"
   unitPrefab: {fileID: 2098440295481876649, guid: 0f9812a76e52b904ab33b70b4b02c254, type: 3}
   unitData: {fileID: 0}
   trainingTime: 5

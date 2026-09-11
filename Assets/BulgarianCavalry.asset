@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   unitName: "\u041A\u043E\u043D\u043D\u0438\u0446\u0430"
   type: 1
+  goldCost: 40
+  goldReward: 20
   maxHealth: 170
   attackDamage: 26
   attackRange: 2.2
