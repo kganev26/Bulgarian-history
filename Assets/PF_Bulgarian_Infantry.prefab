@@ -213,7 +213,6 @@ GameObject:
   - component: {fileID: 6312745147799275377}
   - component: {fileID: 1089372368172055958}
   - component: {fileID: 2706814616702192705}
-  - component: {fileID: 823417235921332395}
   - component: {fileID: 2953047334625667389}
   - component: {fileID: 5199062986083250850}
   m_Layer: 0
@@ -321,19 +320,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &823417235921332395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2098440295481876649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb57a427733ae8944b8bdd5c658c35be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ArmyUnit
-  moveSpeed: 5
 --- !u!195 &2953047334625667389
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -372,6 +358,7 @@ MonoBehaviour:
   factionId: 1
   selectionIndicator: {fileID: 67989822431597120}
   healthBar: {fileID: 1892778706941585043}
+  maxTargetingUnits: 2
 --- !u!1 &6519200581059389641
 GameObject:
   m_ObjectHideFlags: 0

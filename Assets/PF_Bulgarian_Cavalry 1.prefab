@@ -121,7 +121,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2333954033919975949}
   - component: {fileID: 4552357845388646179}
-  - component: {fileID: 5104142151179877000}
   - component: {fileID: 2795266717705450786}
   - component: {fileID: 8899373771174043721}
   - component: {fileID: 1584534007209384931}
@@ -158,19 +157,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1038392158195759592}
   m_Mesh: {fileID: -7227129179611170996, guid: 39344b074a07ca54c9f8dec8029cd7fc, type: 3}
---- !u!114 &5104142151179877000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1038392158195759592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb57a427733ae8944b8bdd5c658c35be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ArmyUnit
-  moveSpeed: 5
 --- !u!195 &2795266717705450786
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -209,6 +195,7 @@ MonoBehaviour:
   factionId: 1
   selectionIndicator: {fileID: 3655094015830672628}
   healthBar: {fileID: 2747597932449613458}
+  maxTargetingUnits: 2
 --- !u!135 &1584534007209384931
 SphereCollider:
   m_ObjectHideFlags: 0

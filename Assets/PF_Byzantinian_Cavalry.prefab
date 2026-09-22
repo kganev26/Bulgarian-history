@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3830853969103342452}
   - component: {fileID: 6641162576713857889}
   - component: {fileID: 2458129645748547519}
-  - component: {fileID: 2938412963637598901}
   - component: {fileID: 1684240048492155191}
   - component: {fileID: 2031546291160899991}
   - component: {fileID: 1794172948625612906}
@@ -98,19 +97,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2938412963637598901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 175660735717031380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb57a427733ae8944b8bdd5c658c35be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ArmyUnit
-  moveSpeed: 5
 --- !u!195 &1684240048492155191
 NavMeshAgent:
   m_ObjectHideFlags: 0

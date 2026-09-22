@@ -11,6 +11,10 @@ public class RTSCameraController : MonoBehaviour
     [SerializeField] private float minZoom = 15f;
     [SerializeField] private float maxZoom = 60f;
 
+    [Header("Camera Bounds")]
+    [SerializeField] private Vector2 minBounds = new Vector2(-50f, -50f);
+    [SerializeField] private Vector2 maxBounds = new Vector2(50f, 50f);
+
     [Header("Camera Reference")]
     [SerializeField] private Camera cam;
 
@@ -53,6 +57,11 @@ public class RTSCameraController : MonoBehaviour
 
         Vector3 moveDirection = (forward * vertical + right * horizontal).normalized;
         transform.position += moveDirection * currentSpeed * Time.deltaTime;
+
+        Vector3 clampedPosition = transform.position + moveDirection * currentSpeed * Time.deltaTime;
+        clampedPosition.x = Mathf.Clamp(clampedPosition.x, minBounds.x, maxBounds.x);
+        clampedPosition.z = Mathf.Clamp(clampedPosition.z, minBounds.y, maxBounds.y);
+        transform.position = clampedPosition;
     }
 
     private void HandleZoom()
